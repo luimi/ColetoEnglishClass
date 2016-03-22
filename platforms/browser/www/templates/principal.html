@@ -1,0 +1,14 @@
+<ion-view title="Principal">
+    <ion-tabs class=" tabs-icon-top tabs-positive">
+        <ion-tab title="Posts" icon="ion-android-menu" href="#/principal/posts">
+            <ion-nav-view name="tab1"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Nuevo" icon="ion-plus-circled" href="#/principal/nuevoPost">
+            <ion-nav-view name="tab2"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Acerca de" icon="ion-information" href="#/principal/acercaDe">
+            <ion-nav-view name="tab3"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Cerrar sesión" icon="ion-android-exit" ng-click="cerrarSession()"></ion-tab>
+    </ion-tabs>
+</ion-view>

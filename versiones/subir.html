@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="../www/js/jquery-1.8.2.min.js"></script>
+	<script src="../www/js/cloudmine-0.9.12.min.js"></script>
+</head>
+<body>
+<button id="subirVersion">Subir</button><br>
+Version actual:<label id="version">version</label>
+<script type="text/javascript">
+	var appid="dfea1806410d764b8cba0e76c99d8128";
+    var apikey="15e3e2086938423cb969efe2b9b39137";
+	ws = new cloudmine.WebService({
+		appid: appid,
+		apikey: apikey
+    });
+    var version=0;
+    getVersion();
+	$(document).ready(function(){
+		$('#subirVersion').click(function(){
+			var v=parseInt(version)+1;
+			var o={
+				__class__:'version',
+				version:v
+			}
+			ws.set('Version'+(version+1),o).on('success',function(){
+				getVersion();
+				alert("version subida");
+			});
+		});
+	})
+	function getVersion(){
+		ws.search('[__class__= "version" ]').on('success',function(data,response){
+	    	for (var id in data) {
+	    		var obj=data[id];
+	    		version=obj.version;
+	    	};
+	    	$('#version').text(version);
+	    });
+	}
+</script>
+</body>
+</html>

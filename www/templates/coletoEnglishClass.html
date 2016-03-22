@@ -1,0 +1,21 @@
+<ion-view title="Coleto English Class">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+    	<img src="./img/logoInicial.png" style="width:100%; max-width:400px;display: block;margin-left: auto;margin-right: auto">
+    
+        <form class="list">
+            <ion-list>
+                <label class="item item-input" >
+                    <span class="input-label">Correo</span>
+                    <input type="email" placeholder="" ng-model="loginDatos.loginCorreo">
+                </label>
+                <label class="item item-input" >
+                    <span class="input-label">Contraseña</span>
+                    <input type="password" placeholder="" ng-model="loginDatos.loginClave">
+                </label>
+            </ion-list>
+            <div class="spacer" style="height: 40px;"></div>
+            <a class="button button-positive button-block " ng-click="login()">Entrar</a>
+            <a ui-sref="nuevoUsuario" class="button button-positive button-clear button-block ">Nuevo usuario</a>
+        </form>
+    </ion-content>
+</ion-view>

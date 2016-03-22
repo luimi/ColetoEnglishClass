@@ -1,0 +1,48 @@
+<ion-view title="Posts"> <ion-content overflow-scroll="true"
+	padding="true" class="has-header"
+	style="background-image: url('../img/fondo.png')"> <ion-refresher
+	pulling-text="Baja pa' actualiza!..." on-refresh="actualizar()">
+</ion-refresher> <label class="item item-input"> <i
+	class="icon ion-search placeholder-icon"></i> <input type="search"
+	placeholder="Filtro" ng-model="filter">
+</label> <label class="item item-input item-select">
+	<div class="input-label">Orden</div> <select ng-model="order">
+		<option></option>
+		<option>usuario</option>
+		<option>-puntaje</option>
+</select>
+</label>
+<div class="card" collection-repeat="post in posts | filter:filter | orderBy:order">
+	<div class="item item-text-wrap"
+		>
+
+		<div class="row">
+			<div class="col">
+				<h4 align="right">{{post.usuario}}</h4>
+			</div>
+		</div>
+		<div class="row" ui-sref="detallePost(post)">
+			<div class="col " style="text-align: center">
+				<h2 style="font-style: italic">
+					<b>"{{post.ingles}}"</b>
+				</h2>
+				<span style="font-size: 13px">{{post.espanol}}</span>
+			</div>
+		</div>
+		<div>
+			<table style="width: 100%">
+				<tr>
+					<th><a ng-click="puntuar(-1,post)"
+						class="button icon ion-thumbsdown button-assertive"
+						style="border-radius: 50%"></a></th>
+					<th><a class="button button-icon icon">{{post.puntaje}}</a></th>
+					<th><a ng-click="puntuar(1,post)"
+						class="button icon ion-thumbsup button-positive"
+						style="border-radius: 50%"></a></th>
+				</tr>
+			</table>
+		</div>
+		<br>
+</div>
+</div>
+</ion-content> </ion-view>

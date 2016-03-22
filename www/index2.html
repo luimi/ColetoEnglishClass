@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+        <link rel="stylesheet" href="css/jquery.mobile.simpledialog.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <script src="js/jquery-1.8.2.min.js"></script> 
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/jquery.mobile.simpledialog2.js"></script>
+        <script src="js/cloudmine-0.9.12.min.js"></script>
+        <script src="js/cloudmine.js"></script>
+        <title>C.E.C.</title>
+        <style type="text/css">
+        	.wrapper {
+			    display: table;
+			    width: 100%;
+			    margin-left: 5px;
+			}
+			.row {
+			    display: table-row;
+			}
+			.col {
+			    display: table-cell;
+			}
+			.col.wide {
+			    width: 90%;
+			}
+			.col.last {
+			    white-space: nowrap;
+			}
+			.wide input {
+			    width: 100%;
+			}
+        </style>
+    </head>
+    <body>
+    
+    <!-- LOGIN-->
+        <div data-role="page" id="login" data-position="fixed">
+        
+            <div data-role="content">
+            
+                <img src="icon.png" style="width:100px;height:100px;margin-left: auto;margin-right: auto;display: block">
+                <input type="email" id="txtLoginUsario" placeholder="Correo" data-clear-btn="true">
+                <input type="password" id="txtLoginClave" placeholder="Contraseña" data-clear-btn="true">
+                <input type="button" value="Entrar" id="btnLogin">
+                <input type="button" value="Nuevo usuario" id="btnNuevo">
+                
+            </div>
+        </div>
+    <!-- NUEVO USUARIO-->
+        </div>
+        <div data-role="page" id="nuevoUsuario">
+            <div data-role="header">
+            	<a href="#" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l" data-rel="back">Volver</a>
+                <h1>Nuevo usuario</h1>
+            </div>
+
+            <div data-role="content">
+                <input type="text" id="txtNuevoNombre" placeholder="Nombre" data-clear-btn="true">
+                <input type="text" id="txtNuevoCorreo" placeholder="Correo" data-clear-btn="true">
+                <input type="text" id="txtNuevoClave" placeholder="Contraseña" data-clear-btn="true">
+                <input type="button" value="Registrar" id="btnRegistrar">
+            </div>
+
+        </div>
+    <!-- PANEL Y PRINCIPAL-->
+        
+        <div data-role="page" id="principal" data-position="fixed">
+            <div data-role="header">
+                <h1>usuario</h1>
+            </div>
+            <div data-role="content">
+            
+                <div data-role="tabs">
+                    <div data-role="navbar">
+                        <ul>
+                            <li><a href="#posts" data-ajax="false" data-icon="bars">Posts</a></li>
+                            <li><a href="#nuevo" data-ajax="false" data-icon="plus">Nuevo</a></li>
+                        </ul>
+                    </div>
+                    <div id="posts" class="ui-body-d ui-content">
+                        <ul data-role="listview" data-filter="true" data-filter-placeholder="Buscar" data-inset="true" data-icon="comment" id="listaPosts">
+                        </ul>
+                    </div>
+                    <div id="nuevo" class="ui-body-d ui-content">
+                        <input type="text" id="txtAgregarEspanol" placeholder="Español" data-clear-btn="true">
+                        <input type="text" id="txtAgregarIngles" placeholder="Ingles" data-clear-btn="true">
+                        <input type="button"  id="btnAgregarRegistrar" data-icon="plus" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left" value="Agregar">
+                    </div>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b">
+                <h1></h1>
+                <button id="btnPrincipalCerrar" class="ui-btn-right ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-action">Cerrar sesión</button>
+            </div>
+        </div>
+    <!-- POST -->
+        <div data-role="page" id="detallePost">
+            <div data-role="header">
+                <a href="#" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l" data-rel="back">Volver</a>
+                <span class="ui-title"></span>
+            </div>
+            
+            <div data-role="content">
+            	<h2>Puntaje</h2>
+            	<table style="width:100%">
+            		<tr>
+            			<th><a id="btnComentarioNegativo" class="ui-btn fa fa-thumbs-o-down"></a></th>
+            			<th><a id="txtComentarioPuntaje">0</a></th>
+            			<th><a id="btnComentarioPositivo" class="ui-btn fa fa-thumbs-o-up"></a></th>
+            		</tr>
+            	</table>
+				<h2>Comentarios</h2>
+                <ul id="listaComentarios"data-role="listview" data-inset="true">
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed" role="contentinfo" >
+                <div class="wrapper">
+				    <div class="row">
+				        <div class="col wide">
+				            <input id="txtComentarioComentario" type="text" id="txtPostComentario" placeholder="Comentario" data-clear-btn="true" >
+				        </div>
+				        <div class="col last">
+				            <button id="btnComentarioEnviar" class="ui-btn ui-icon-navigation ui-btn-icon-notext ui-corner-all"></button>
+				        </div>
+				    </div>
+				</div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function(){
+            	progressDialog();
+                if( localStorage.getItem('cm_session')!=null){
+                    principal();
+                }
+                $('#btnNuevo').click(function(){
+                    $.mobile.changePage('#nuevoUsuario');
+                });
+                //$( "#menuDrawer" ).trigger( "updatelayout" );
+            })
+        </script>
+    </body>
+</html>

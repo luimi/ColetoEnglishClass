@@ -1,0 +1,45 @@
+
+
+<ion-view title="Detalle post"> <ion-nav-buttons side="right">
+<button ng-show="propietario"
+	class="button icon button-icon ion-android-checkmark-circle"
+	ng-click="modificar(nuevo)"></button>
+</ion-nav-buttons> <ion-content overflow-scroll="true" padding="true" class="has-header"
+	style="background-image: url('../img/fondo.png');">
+<div class="card">
+	<div class="item">
+		<input type="text" placeholder="Ingles"
+			style="width: 100%" ng-model="campos.ingles" ng-disabled="!propietario">
+		<input type="text" placeholder="Español"
+			style="width: 100%" ng-model="campos.espanol" ng-disabled="!propietario">
+	</div>
+
+</div>
+<h3 style="text-align: center">Puntaje</h3>
+<h4 style="text-align: center" id="txtComentarioPuntaje">{{puntaje}}</h4>
+
+<h3 style="text-align: center">Comentarios</h3>
+<div>
+	<div class="card" ng-repeat="comentario in comentarios">
+		<div class="item item-divider">
+			<div class="row">
+				<div class="col"><h4><b>{{comentario.nombre}}</b></h4></div>
+				<div class="col" style="text-align:right"><h5>{{comentario.hora}}</h5></div>
+			</div>
+		</div>
+		<div class="item item-text-wrap" >
+			
+			<h3>{{comentario.comentario}}</h3>
+		</div>
+	</div>
+</div>
+
+</ion-content> <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
+<label class="item-input-wrapper"> <input type="text"
+	placeholder="Comentario" ng-model="comentario"
+	on-return="enviar(); closeKeyboard()" on-focus="inputUp()"
+	on-blur="inputDown()" />
+</label>
+<button class="button button-icon icon ion-android-send "
+	ng-click="enviar()"></button>
+</ion-footer-bar> </ion-view>

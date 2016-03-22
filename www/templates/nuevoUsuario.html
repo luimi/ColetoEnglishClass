@@ -1,0 +1,23 @@
+<ion-view title="Nuevo usuario">
+    <ion-content overflow-scroll="true" padding="true" scroll="false" class="has-header">
+        <form class="list">
+            <ion-list>
+                <label class="item item-input">
+                    <span class="input-label">Nombre</span>
+                    <input type="text" placeholder="" ng-model="nuevoDatos.nombre">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Correo</span>
+                    <input type="email" placeholder="" ng-model="nuevoDatos.correo">
+                </label>
+                <div class="item item-input">
+	                <span class="input-label">Contraseña</span>
+                    <input type="{{tipo}}" placeholder="" ng-model="nuevoDatos.clave">
+	                <button class="button button-small button-icon icon ion-eye" ng-click="verClave()" style="margin-right:20px"></button>
+                </div>
+
+            </ion-list>
+            <button class="button button-positive button-block " ng-click="registrar()">Registrar</button>
+        </form>
+    </ion-content>
+</ion-view>
